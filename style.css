@@ -374,3 +374,34 @@ section {
         margin-top: 4rem;
     }
 }
+
+/* --- SKILLS & PROJECTS LAYOUT UPDATES --- */
+
+/* 1. Differentiate backgrounds for better section flow */
+#skills {
+    background: var(--bg-color); 
+}
+
+#projects {
+    background: var(--second-bg-color); 
+}
+
+/* 2. Ensure icons are centered and sized correctly */
+.project-box i {
+    font-size: 7rem;
+    color: var(--main-color);
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+/* 3. Responsive Grid Fix for Mobile */
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr; /* Stacks boxes on small screens */
+        padding: 0 5%;
+    }
+    
+    .project-box {
+        margin-bottom: 2rem;
+    }
+}
