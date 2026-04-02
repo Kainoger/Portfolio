@@ -405,3 +405,42 @@ section {
         margin-bottom: 2rem;
     }
 }
+
+/* --- FIXED UNIFORM GRID BOXES --- */
+
+/* 1. Ensure the grid container forces all children to match the tallest box in the row */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch; /* The 'Magic' property for equal heights */
+    gap: 2.5rem;
+}
+
+/* 2. Make the box itself a flex container to push the button to the bottom */
+.project-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    height: 100%;
+    padding: 3rem 2rem 4rem;
+    transition: .5s ease;
+}
+
+/* 3. Allow the paragraph to grow and fill the empty space */
+.project-box p {
+    flex-grow: 1; 
+    margin: 1.5rem 0 2rem;
+}
+
+/* 4. Responsive adjustments for different screen sizes */
+@media (max-width: 1200px) {
+    .projects-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller desktops/tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr; /* 1 column for mobile */
+    }
+}
