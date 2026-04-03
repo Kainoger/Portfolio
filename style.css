@@ -1,4 +1,6 @@
-/* Variables for Easy Changes */
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
 :root {
     --bg-color: #080808;
     --second-bg-color: #131313;
@@ -18,7 +20,7 @@
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* 1rem = 10px */
     overflow-x: hidden;
 }
 
@@ -27,7 +29,9 @@ body {
     color: var(--text-color);
 }
 
-/* Header with Glass Effect */
+/* =========================================
+   2. HEADER & NAVIGATION
+   ========================================= */
 .header {
     position: fixed;
     top: 0;
@@ -35,7 +39,7 @@ body {
     width: 100%;
     padding: 2rem 9%;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -63,12 +67,46 @@ body {
     color: var(--main-color);
 }
 
-/* Home Section Layout */
+/* =========================================
+   3. COMMON SECTION STYLES
+   ========================================= */
 section {
     min-height: 100vh;
     padding: 10rem 9% 2rem;
 }
 
+.heading {
+    text-align: center;
+    font-size: 4.5rem;
+    margin-bottom: 5rem;
+}
+
+.heading span {
+    color: var(--main-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    background: var(--main-color);
+    border-radius: 4rem;
+    box-shadow: 0 0 1rem var(--main-color);
+    font-size: 1.6rem;
+    color: var(--second-bg-color);
+    letter-spacing: .1rem;
+    font-weight: 600;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    box-shadow: none;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   4. HOME SECTION
+   ========================================= */
 .home {
     display: flex;
     justify-content: center;
@@ -100,7 +138,6 @@ section {
     margin: 2rem 0;
 }
 
-/* Glowing Social Icons */
 .social-icons a {
     display: inline-flex;
     justify-content: center;
@@ -122,30 +159,10 @@ section {
     box-shadow: 0 0 1rem var(--main-color);
 }
 
-/* Glowing Button */
-.btn {
-    display: inline-block;
-    padding: 1rem 2.8rem;
-    background: var(--main-color);
-    border-radius: 4rem;
-    box-shadow: 0 0 1rem var(--main-color);
-    font-size: 1.6rem;
-    color: var(--second-bg-color);
-    letter-spacing: .1rem;
-    font-weight: 600;
-    transition: .5s ease;
-}
-
-.btn:hover {
-    box-shadow: none;
-    transform: scale(1.05);
-}
-
-/* The Glowing Profile Image */
 .home-img img {
     width: 30vw;
-    aspect-ratio: 1/1; /* Forces square shape */
-    object-fit: cover; /* Prevents squishing */
+    aspect-ratio: 1/1;
+    object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 0 2.5rem var(--main-color);
     transition: .4s ease-in-out;
@@ -156,46 +173,67 @@ section {
     transform: scale(1.02);
 }
 
-/* Simple Responsive Adjustment */
-@media (max-width: 991px) {
-    .home {
-        flex-direction: column-reverse;
-        text-align: center;
-    }
-    .home-img img {
-        width: 60vw;
-        margin-top: 4rem;
-    }
-}
-
-.projects {
+/* =========================================
+   5. ABOUT SECTION
+   ========================================= */
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
     background: var(--second-bg-color);
 }
 
-.heading {
-    text-align: center;
-    font-size: 4.5rem;
-    margin-bottom: 5rem;
+.about-img img {
+    width: 25vw;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 0 2.5rem var(--main-color);
 }
 
-.heading span {
-    color: var(--main-color);
+.about-content h2 {
+    text-align: left;
 }
+
+.about-content h3 {
+    font-size: 2.6rem;
+}
+
+.about-content p {
+    font-size: 1.6rem;
+    margin: 2rem 0 3rem;
+}
+
+/* =========================================
+   6. SKILLS & PROJECTS (UNIFORM GRID)
+   ========================================= */
+/* Alternating backgrounds for visual flow */
+#skills { background: var(--bg-color); }
+#projects { background: var(--second-bg-color); }
 
 .projects-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    align-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: stretch; /* Forces equal heights */
     gap: 2.5rem;
 }
 
 .project-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Keeps button at the bottom */
     background: var(--bg-color);
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
     text-align: center;
     border: .2rem solid var(--second-bg-color);
     transition: .5s ease;
+}
+
+/* Project box items for #skills */
+#skills .project-box {
+    background: var(--second-bg-color);
 }
 
 .project-box:hover {
@@ -206,6 +244,7 @@ section {
 .project-box i {
     font-size: 7rem;
     color: var(--main-color);
+    margin-bottom: 1.5rem;
 }
 
 .project-box h3 {
@@ -214,24 +253,90 @@ section {
 }
 
 .project-box p {
+    flex-grow: 1; /* Pushes content away from the button */
     font-size: 1.6rem;
     margin: 1rem 0 3rem;
 }
 
-/* --- CONTACT SECTION --- */
+/* =========================================
+   7. CONTACT SECTION (DIVIDED LAYOUT)
+   ========================================= */
 .contact {
     background: var(--bg-color);
 }
 
-.contact h2 {
-    margin-bottom: 3rem;
+/* Part 1: Direct Info Cards */
+.contact-info {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
 }
 
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--second-bg-color);
+    padding: 2rem 3.5rem;
+    border-radius: 1.2rem;
+    border: .2rem solid transparent;
+    transition: .3s ease;
+}
+
+.info-item:hover {
+    border-color: var(--main-color);
+    transform: scale(1.02);
+}
+
+.info-item i {
+    font-size: 3rem;
+    color: var(--main-color);
+}
+
+.info-text span {
+    font-size: 1.2rem;
+    color: var(--main-color);
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-text p {
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+/* Visual "OR" Divider */
+.contact-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 4rem auto;
+    max-width: 70rem;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--text-color);
+    opacity: 0.2;
+}
+
+.contact-divider span {
+    padding: 0 2rem;
+    font-size: 1.3rem;
+    letter-spacing: .2rem;
+    opacity: 0.6;
+}
+
+/* Part 2: Form Styles */
 .contact form {
     max-width: 70rem;
-    margin: 1rem auto;
+    margin: 0 auto;
     text-align: center;
-    margin-bottom: 3rem;
 }
 
 .contact form .input-box {
@@ -253,26 +358,22 @@ section {
     transition: .3s ease;
 }
 
-/* The Blue highlight when clicking a field */
+.contact form .input-box input {
+    width: 49%;
+}
+
 .contact form .input-box input:focus,
 .contact form textarea:focus {
     border-color: var(--main-color);
 }
 
-.contact form .input-box input {
-    width: 49%; /* Side-by-side on desktop */
-}
-
 .contact form textarea {
-    resize: none; /* Keeps the layout clean */
+    resize: none;
 }
 
-.contact form .btn {
-    margin-top: 2rem;
-    cursor: pointer;
-}
-
-/* --- FOOTER SECTION --- */
+/* =========================================
+   8. FOOTER
+   ========================================= */
 .footer {
     display: flex;
     justify-content: space-between;
@@ -305,209 +406,34 @@ section {
     color: var(--second-bg-color);
 }
 
-/* --- RESPONSIVE FIXES (Critical for Mobile) --- */
+/* =========================================
+   9. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================= */
+
+/* Desktop & Tablets */
 @media (max-width: 1200px) {
-    html {
-        font-size: 55%;
-    }
+    html { font-size: 55%; }
+    .projects-container { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 991px) {
-    .header {
-        padding: 2rem 3%;
-    }
-    section {
-        padding: 10rem 3% 2rem;
-    }
-    .footer {
-        padding: 2rem 3%;
-    }
+    .header { padding: 2rem 3%; }
+    section { padding: 10rem 3% 2rem; }
+    .home { flex-direction: column-reverse; text-align: center; }
+    .home-img img { width: 60vw; margin-top: 4rem; }
+    .footer { padding: 2rem 3%; }
 }
 
+/* Mobile Devices */
 @media (max-width: 768px) {
-    .contact form .input-box input {
-        width: 100%; /* Stacks fields on top of each other on mobile */
-    }
-}
-
-.about {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    background: var(--second-bg-color);
-}
-
-.about-img img {
-    width: 30vw; /* Keeps it consistent with home */
-    aspect-ratio: 1/1;
-    object-fit: cover;
-    border-radius: 50%; /* Makes it circular */
-    box-shadow: 0 0 2.5rem var(--main-color); /* Adds the blue glow */
-}
-
-.about-content {
-    padding-left: 2rem;
-}
-
-.about-content h2 {
-    text-align: left;
-    line-height: 1.2;
-}
-
-.about-content h3 {
-    font-size: 2.6rem;
-}
-
-.about-content p {
-    font-size: 1.6rem;
-    margin: 2rem 0 3rem;
-}
-
-/* Mobile Fix for About */
-@media (max-width: 768px) {
-    .about {
-        flex-direction: column;
-    }
-    .about-img img {
-        width: 70vw;
-        margin-top: 4rem;
-    }
-}
-
-/* --- SKILLS & PROJECTS LAYOUT UPDATES --- */
-
-/* 1. Differentiate backgrounds for better section flow */
-#skills {
-    background: var(--bg-color); 
-}
-
-#projects {
-    background: var(--second-bg-color); 
-}
-
-/* 2. Ensure icons are centered and sized correctly */
-.project-box i {
-    font-size: 7rem;
-    color: var(--main-color);
-    display: inline-block;
-    margin-bottom: 1.5rem;
-}
-
-/* 3. Responsive Grid Fix for Mobile */
-@media (max-width: 768px) {
-    .projects-container {
-        grid-template-columns: 1fr; /* Stacks boxes on small screens */
-        padding: 0 5%;
-    }
+    .about { flex-direction: column; text-align: center; }
+    .about-img img { width: 70vw; margin-top: 4rem; }
+    .about-content h2 { text-align: center; }
     
-    .project-box {
-        margin-bottom: 2rem;
-    }
-}
-
-/* --- FIXED UNIFORM GRID BOXES --- */
-
-/* 1. Ensure the grid container forces all children to match the tallest box in the row */
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: stretch; /* The 'Magic' property for equal heights */
-    gap: 2.5rem;
-}
-
-/* 2. Make the box itself a flex container to push the button to the bottom */
-.project-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; 
-    height: 100%;
-    padding: 3rem 2rem 4rem;
-    transition: .5s ease;
-}
-
-/* 3. Allow the paragraph to grow and fill the empty space */
-.project-box p {
-    flex-grow: 1; 
-    margin: 1.5rem 0 2rem;
-}
-
-/* 4. Responsive adjustments for different screen sizes */
-@media (max-width: 1200px) {
-    .projects-container {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller desktops/tablets */
-    }
-}
-
-@media (max-width: 768px) {
-    .projects-container {
-        grid-template-columns: 1fr; /* 1 column for mobile */
-    }
-}
-
-/* --- CONTACT SECTION REFINEMENTS --- */
-
-.contact-info {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    margin-bottom: 3rem;
-    flex-wrap: wrap; /* Good for mobile */
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.info-item i {
-    font-size: 2.5rem;
-    color: var(--main-color);
-}
-
-.info-item p {
-    font-size: 1.8rem;
-    color: var(--text-color);
-    font-weight: 500;
-}
-
-/* Ensure form is centered and styled */
-.contact form {
-    max-width: 70rem;
-    margin: 0 auto;
-    text-align: center;
-}
-
-/* Update grid and box behaviors from previous fix */
-.projects-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    align-items: stretch;
-    gap: 2.5rem;
-}
-
-.project-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding: 3rem 2rem 4rem;
-}
-
-.project-box p {
-    flex-grow: 1;
-    margin-bottom: 2rem;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .contact-info {
-        flex-direction: column;
-        gap: 2rem;
-        align-items: center;
-    }
-    .projects-container {
-        grid-template-columns: 1fr;
-    }
+    .projects-container { grid-template-columns: 1fr; padding: 0 5%; }
+    
+    .contact-info { flex-direction: column; align-items: center; }
+    .info-item { width: 100%; max-width: 40rem; justify-content: center; }
+    
+    .contact form .input-box input { width: 100%; }
 }
