@@ -39,7 +39,7 @@ body {
     width: 100%;
     padding: 2rem 9%;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -73,6 +73,9 @@ body {
 section {
     min-height: 100vh;
     padding: 10rem 9% 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .heading {
@@ -108,8 +111,7 @@ section {
    4. HOME SECTION
    ========================================= */
 .home {
-    display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
     gap: 8rem;
 }
@@ -177,8 +179,7 @@ section {
    5. ABOUT SECTION
    ========================================= */
 .about {
-    display: flex;
-    justify-content: center;
+    flex-direction: row;
     align-items: center;
     gap: 4rem;
     background: var(--second-bg-color);
@@ -208,21 +209,20 @@ section {
 /* =========================================
    6. SKILLS & PROJECTS (UNIFORM GRID)
    ========================================= */
-/* Alternating backgrounds for visual flow */
 #skills { background: var(--bg-color); }
 #projects { background: var(--second-bg-color); }
 
 .projects-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    align-items: stretch; /* Forces equal heights */
+    align-items: stretch; /* Forces equal height boxes */
     gap: 2.5rem;
 }
 
 .project-box {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Keeps button at the bottom */
+    justify-content: space-between;
     background: var(--bg-color);
     padding: 3rem 2rem 4rem;
     border-radius: 2rem;
@@ -231,7 +231,6 @@ section {
     transition: .5s ease;
 }
 
-/* Project box items for #skills */
 #skills .project-box {
     background: var(--second-bg-color);
 }
@@ -253,24 +252,26 @@ section {
 }
 
 .project-box p {
-    flex-grow: 1; /* Pushes content away from the button */
+    flex-grow: 1; /* Pushes the button to the bottom */
     font-size: 1.6rem;
     margin: 1rem 0 3rem;
 }
 
 /* =========================================
-   7. CONTACT SECTION (DIVIDED LAYOUT)
+   7. CONTACT SECTION (CENTERED & DIVIDED)
    ========================================= */
 .contact {
     background: var(--bg-color);
+    align-items: center; /* Crucial for centering children */
 }
 
-/* Part 1: Direct Info Cards */
+/* Part 1: Direct Contact Cards */
 .contact-info {
     display: flex;
     justify-content: center;
     gap: 4rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
+    width: 100%;
     flex-wrap: wrap;
 }
 
@@ -279,10 +280,11 @@ section {
     align-items: center;
     gap: 1.5rem;
     background: var(--second-bg-color);
-    padding: 2rem 3.5rem;
+    padding: 1.5rem 3rem;
     border-radius: 1.2rem;
     border: .2rem solid transparent;
     transition: .3s ease;
+    min-width: 280px;
 }
 
 .info-item:hover {
@@ -308,12 +310,14 @@ section {
     font-weight: 600;
 }
 
-/* Visual "OR" Divider */
+/* Part 2: The "OR" Divider Line */
 .contact-divider {
     display: flex;
     align-items: center;
+    justify-content: center;
     text-align: center;
-    margin: 4rem auto;
+    margin: 4rem 0;
+    width: 100%;
     max-width: 70rem;
 }
 
@@ -330,12 +334,13 @@ section {
     font-size: 1.3rem;
     letter-spacing: .2rem;
     opacity: 0.6;
+    white-space: nowrap;
 }
 
-/* Part 2: Form Styles */
+/* Part 3: Message Form */
 .contact form {
     max-width: 70rem;
-    margin: 0 auto;
+    width: 100%;
     text-align: center;
 }
 
@@ -407,10 +412,9 @@ section {
 }
 
 /* =========================================
-   9. RESPONSIVE DESIGN (MEDIA QUERIES)
+   9. RESPONSIVE MEDIA QUERIES
    ========================================= */
 
-/* Desktop & Tablets */
 @media (max-width: 1200px) {
     html { font-size: 55%; }
     .projects-container { grid-template-columns: repeat(2, 1fr); }
@@ -424,7 +428,6 @@ section {
     .footer { padding: 2rem 3%; }
 }
 
-/* Mobile Devices */
 @media (max-width: 768px) {
     .about { flex-direction: column; text-align: center; }
     .about-img img { width: 70vw; margin-top: 4rem; }
@@ -433,7 +436,7 @@ section {
     .projects-container { grid-template-columns: 1fr; padding: 0 5%; }
     
     .contact-info { flex-direction: column; align-items: center; }
-    .info-item { width: 100%; max-width: 40rem; justify-content: center; }
+    .info-item { width: 100%; max-width: 45rem; }
     
     .contact form .input-box input { width: 100%; }
 }
